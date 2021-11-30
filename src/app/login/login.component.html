@@ -1,0 +1,6 @@
+<form (ngSubmit)='login()'>
+   Username <input type="text" [(ngModel)]="user.username" class="form-control" name="username" id="username">
+   Password <input type="text" [(ngModel)]="user.password"  class="form-control" name="password" id="password">
+    <input type="submit" value="Login">
+    <a routerLink='registration'>Registration</a>
+</form>
