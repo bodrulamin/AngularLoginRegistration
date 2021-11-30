@@ -1,6 +1,30 @@
-<form (ngSubmit)='login()'>
+<div class="h1">Registration</div>
+
+
+<form (ngSubmit)='signUp()'>
     Full Name <input type="text" [(ngModel)]="user.fullname" class="form-control" name="fullname" id="username">
+    <div class="selectors">
+
+        <select name="division" id="division" (change)='getDistricts()' [(ngModel)]="division">
+            <option value="-1">Select Division</option>
+            <option *ngFor="let item of divisions" value="{{item._id}}">{{item.division}}</option>
+        </select>
+
+        <select name="district" id="district" [(ngModel)]="upazillas">
+            <option value="-1">Select District</option>
+            <option *ngFor="let item of districts" value="{{item.upazilla}}">{{item.district}}</option>
+        </select>
+
+        <select name="upazilla" id="upazilla">
+            <option value="-1">Select Upazilla</option>
+            <option *ngFor="let u of getUpazilla()" value="{{u}}">{{u}}</option>
+        </select>
+
+    </div>
     Username <input type="text" [(ngModel)]="user.username" class="form-control" name="username" id="username">
-    Password <input type="text" [(ngModel)]="user.password"  class="form-control" name="password" id="password">
-     <input type="submit" value="Login">
- </form>
+    Password <input type="text" [(ngModel)]="user.password" class="form-control" name="password" id="password">
+    <input type="submit" value="SignUp">
+    already a user ? <input type="button" (click)='loginPage()' value="Login">
+
+</form>
+<div *ngIf="user.loggedIn" class="text-success">Registration Successfull</div>
